@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/editArticle/editArticle",
+    "pages/myArticle/myArticle",
+    "pages/my/index",
+    "pages/writearticle/writearticle",
+    "pages/category/index",
+    "pages/detail/index",
+    "pages/about/index",
+    "pages/share/index",
+    "pages/collect/index",
+    "pages/showcontent/showcontent",
+    "pages/new/index"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "guo's博客",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+		"i-notice-bar": "/dist/notice-bar/index"
+	},
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "color": "#909090",
+    "list": [
+      {
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-selected.png",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "text": "专题",
+        "iconPath": "images/category.png",
+        "selectedIconPath": "images/category-selected.png",
+        "pagePath": "pages/category/index"
+      },
+      {
+        "text": "发布",
+        "iconPath": "images/add.png",
+        "selectedIconPath": "images/add-selected.png",
+        "pagePath": "pages/writearticle/writearticle"
+      },
+      {
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-selected.png",
+        "pagePath": "pages/my/index"
+      }
+    ]
+  },
+  "plugins": {
+    "htmltowxml": {
+      "version": "1.4.0",
+      "provider": "wxa51b9c855ae38f3c"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

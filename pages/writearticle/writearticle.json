@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+		"Select": "/component/select/select",
+		"mp-toptips": "../weui-miniprogram/toptips/toptips",
+		"mp-cells": "../weui-miniprogram/cells/cells",
+		"mp-cell": "../weui-miniprogram/cell/cell",
+		"mp-form": "../weui-miniprogram/form/form",
+		"mp-actionSheet": "../weui-miniprogram/actionsheet/actionsheet",
+		"van-action-sheet": "../../miniprogram_npm/@vant/weapp/action-sheet/index",
+		"i-toast": "../../dist/toast/index"
+	}
+}

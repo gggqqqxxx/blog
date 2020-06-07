@@ -1,0 +1,23 @@
+<import src="../towxml/entry.wxml" />
+
+<view class='row info'>
+  <view class='col-8' style="text-align:center">
+    <text class='ellipsis-2row font-lv1'>{{article.title}}</text>
+  </view>
+</view>
+
+<view class='data'>
+  <view class='row'>
+    <view class='col'>
+      <text class='text-muted font-lv5'>作者</text>
+      <text class='font-lv3'>{{article.author}}</text>
+    </view>
+    <view class='col'>
+      <text class='text-muted font-lv5'>标签/分类</text>
+      <text class='font-lv3'>{{article.labels}}</text>
+    </view>
+  </view>
+</view>
+<div>内容：</div>
+<template is="entry" data="{{...article.content}}"/>
+<i-toast id="toast" />

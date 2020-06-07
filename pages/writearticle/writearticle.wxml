@@ -1,0 +1,82 @@
+<view class="page__bd">
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells>
+      <mp-cell ext-class=" weui-cell_vcode">
+        <input type="text" class="title_value" placeholder=" 请输入标题"  bindinput="titleInput" value="{{content.title}}" />
+        <view slot="footer" class="weui-vcode-btn">
+          <button class="read" type="primary" bindtap="show_article" style="vertical-align: middle">预览</button>
+        </view>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+
+  <mp-cell>
+    <view slot="title" style="position: relative;margin-right: 10px;">
+      <image src="{{userInfo.userPic}}" style="width: 30px; height: 30px; display: block;" />
+    </view>
+    <view class="author_name" style="width:400rpx">
+      <text class="username">{{userInfo.nickName}}</text>
+    </view>
+
+    <view slot="footer" class="labels" style="position: relative;margin-right: 10px;">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd" style="width: 105px">
+            <picker bindchange="bindLabelChange" value="{{labelIndex}}" range="{{labels}}">
+              <view class="weui-select label_text">{{labels[labelIndex]}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__bd weui-cell__bd_in-select-before">
+          </view>
+        </view>
+      </view>
+    </view>
+  </mp-cell>
+
+  <view class="content">
+    <view class='row'> 
+        <textarea data-index="{{index}}" bindinput="textInput" class="textarea" value="{{article_content.content}}" placeholder="请输入正文" placeholder-class="placeholder" maxlength="-1"></textarea>
+
+
+      <view class="article_file" wx:if="{{file_type[index]}}">
+        <!-- <image src="{{ article_img[index] }}" class='article_img' mode='aspectFit' bindlongpress="updateFile" data-index="{{index}}" wx:if="{{file_type[index] == 1 && article_img[index] != '/images/plus.png'}}" /> -->
+        <!-- <video src="{{ article_img[index] }}" class='article_video' bindlongpress="updateFile" data-index="{{index}}" wx:if="{{file_type[index] == 2 && article_img[index] != '/images/plus.png'}}" /> -->
+      </view>
+    </view>
+
+    <view class="submit_reset">
+      <button class="submit_btn" plain="true" type="primary" bindtap="submit_article">发布</button>
+    </view>
+
+    <view class="add_article">
+      <image src="/images/upload_img.png" class='add_img' bindtap="upload_img" />
+      <view wx:if="{{showActionsheet}}" style="display:block;width:100%;height:400rpx;border:1px solid #ccc;background-color:#ccc">
+      设置一个文章列表图
+      <input bindinput="getUrl" value="{{article_img}}" style="border:1px solid #000;color:white"></input>
+      </view>
+      
+      
+      <!-- <image src="/images/plus.png" class='add_img' bindtap="add_article" wx:if="{{text_flag}}" /> -->
+    </view>
+    
+  </view>
+</view>
+
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" ext-class="error_text"></mp-toptips>
+<mp-toptips msg="{{err_msg}}" type="error" show="{{err_msg}}" ext-class="error_text"></mp-toptips>
+
+<!-- <mp-actionSheet bindactiontap="delArticleSheet" show="{{isShowDelSheet}}" actions="{{delactions}}" title="删除段落">
+</mp-actionSheet>
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ updateActions }}"
+	cancel-text="取消"
+  bind:close="onClose"
+  bind:select="onSelect"
+	bind:cancel="onClose"
+/> -->
+
+<view wx:if="{{loading}}">
+  <i-load-more tip="{{tip}}" loading="{{loading}}" />
+</view>
+<i-toast id="toast" />

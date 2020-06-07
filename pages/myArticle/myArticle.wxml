@@ -1,0 +1,61 @@
+<view class="avatar">
+  <image src='{{userInfo.userPic}}' class="user_avatar"></image> 
+	<text class="add_user">{{ userInfo.nickName }}</text>
+</view>
+<i-notice-bar icon="systemprompt" loop>
+  长按自己的文章可以编辑或删除文章
+</i-notice-bar>
+<!-- tab标签页-->
+<view class="container">
+  <view class='tab'>
+    <scroll-view scroll-x="true" class='tab-nav' scroll-left='{{scrollLeft}}' scroll-with-animation="true">
+      <view class='tab-nav-c' style='width:{{navlist.length*90}}px'>
+        <view wx:for="{{navlist}}" wx:key="unique" class='{{current==index?"on":""}}' data-current="{{index}}" bindtap='tab'>
+          {{item}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<!--  文章列表展示  -->
+<view class='panel base-padding base-margin-bottom cate-data'>
+  <view class='panel-body'>
+    <view class='row' id="{{item.objectId}}"  bindlongpress='modifyArticle' data-index="{{item.objectId}}" data-title="{{item.title}}" wx:for="{{content1}}" wx:key="index">
+    <navigator url="/pages/detail/index?id={{item.objectId}}">
+      <view class='row-left'>       
+          <image mode='scaleToFill' class='box-shadow' src='{{item.listPic}}' />       
+      </view>
+      <view class='row-right'>
+        <view class='ellipsis-1row font-lv2'>{{item.title}}</view>
+        <view class='text-muted info'>
+          <view>
+            <image src='/images/clock.png'></image> 发表时间 {{item.createdAt}}</view>
+        </view>
+        <view class='text-muted info'>
+          <view>
+            <image src='/images/eye.png'></image> {{item.read_counts}} 阅读 </view>
+            <view>
+            <image src='/images/star.png'></image> {{item.like}} 点赞 </view>                        
+        </view>          
+      </view>      
+      </navigator>
+    </view>
+  </view>
+</view> 
+
+<mp-halfScreenDialog 
+  bindbuttontap="buttontap"
+  show="{{show}}"
+  maskClosable="{{true}}" 
+  title="请选择" 
+  desc="确认选择文章" 
+  tips="文章标题：{{article_title}}"
+  buttons="{{buttons}}"
+	extClass="screenDialog"
+></mp-halfScreenDialog>
+
+<view wx:if="{{isShow}}">
+	<i-load-more tip="{{tip}}" loading="{{loading}}" />
+</view>
+<i-toast id="toast" /> 
